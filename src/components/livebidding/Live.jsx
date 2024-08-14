@@ -14,7 +14,7 @@ const Live = () => {
     useEffect(() => {
         const fetchLiveBids = async () => {
             try {
-                const response = await axios.get('http://localhost:8800/api/products/live');
+                const response = await axios.get('https://energy-backend-ww4p.onrender.com/api/products/live');
                 setLiveBids(response.data);
             } catch (err) {
                 console.error(err);

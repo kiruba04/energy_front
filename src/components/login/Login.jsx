@@ -15,7 +15,7 @@ const Login = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:8800/api/user/login', {
+            const response = await axios.post('https://energy-backend-ww4p.onrender.com/api/user/login', {
                 email: username,
                 password,
             }, {

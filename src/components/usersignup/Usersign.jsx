@@ -25,7 +25,7 @@ const Usersign = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8800/api/user/register/user', {
+      const response = await axios.post('https://energy-backend-ww4p.onrender.com/api/user/register/user', {
         username,
         email,
         phone,
