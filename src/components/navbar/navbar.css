@@ -1,0 +1,14 @@
+.bg{
+    background-color:transparent;
+}
+
+.bgfont{
+    color: black;
+
+}
+.bgfont :hover{
+    color:green;
+}
+.bgnav{
+    background-color: #ffffff;
+}
