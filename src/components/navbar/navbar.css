@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Oswald:wght@200..700&display=swap');
+
+
+
 .bg{
     background-color:transparent;
 }
 
 .bgfont{
     color: black;
+    font-family: "Hind", sans-serif;
+
 
 }
 .bgfont :hover{

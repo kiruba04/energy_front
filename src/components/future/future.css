@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Edu+VIC+WA+NT+Beginner:wght@400..700&family=Exo:ital,wght@0,100..900;1,100..900&family=LXGW+WenKai+Mono+TC&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mooli&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+.card-title
+{
+    text-align: center !important;
+    margin-bottom: 25px !important;
+     position: relative !important; /* Necessary for positioning the pseudo-element */
+     padding-bottom: 5px !important; /* Space for the border effect */
+}
+
+.card-title::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; /* Height of the "border" */
+    background: linear-gradient(to right, #2ebf91, #8360c3); 
+  }
+  
+
+.card{
+    background: linear-gradient(to right, #FAFFD1, #A1FFCE) !important;
+    font-family: "Exo", sans-serif !important;
+    font-weight: 400;
+
+}
+
+.cardui {
+    transition: transform 1s ease, box-shadow 1s ease;
+    animation: original 1s forwards;
+}
+
+.cardui:hover {
+    animation: trans 1s forwards;
+    box-shadow: rgb(102, 102, 110) 0px 30px 60px -12px inset, rgb(255, 255, 255) 0px 18px 36px -18px inset;
+}
+
+@keyframes trans {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+@keyframes original {
+    0% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}

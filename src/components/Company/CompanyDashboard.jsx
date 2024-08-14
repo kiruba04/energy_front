@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Button, Form, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
-
+import './Company.css'
 const CompanyDashboard = () => {
     const [products, setProducts] = useState([]);
     const [formData, setFormData] = useState({
@@ -31,7 +31,6 @@ const CompanyDashboard = () => {
         };
         fetchProducts();
     }, []); // Empty dependency array to run only once when component mounts
-    
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -71,86 +70,110 @@ const CompanyDashboard = () => {
 
     return (
         <Container>
-            <Row className="my-4">
+            <Row className="my-4 bg-dull">
                 <Col>
-                    <h2>Create a Product</h2>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="type">
-                            <Form.Label>Type</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="type"
-                                value={formData.type}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="contract" className="mt-3">
-                            <Form.Label>Contract</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="contract"
-                                value={formData.contract}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="available" className="mt-3">
-                            <Form.Label>Available</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="available"
-                                value={formData.available}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="price" className="mt-3">
-                            <Form.Label>Price</Form.Label>
-                            <Form.Control
-                                type="number"
-                                name="price"
-                                value={formData.price}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="startbidTime" className="mt-3">
-                            <Form.Label>Start Bid Time</Form.Label>
-                            <Form.Control
-                                type="time"
-                                name="startbidTime"
-                                value={formData.startbidTime}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="endbidTime" className="mt-3">
-                            <Form.Label>End Bid Time</Form.Label>
-                            <Form.Control
-                                type="time"
-                                name="endbidTime"
-                                value={formData.endbidTime}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="date" className="mt-3">
-                            <Form.Label>Date</Form.Label>
-                            <Form.Control
-                                type="date"
-                                name="date"
-                                value={formData.date}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Form.Group>
-                        <Button variant="primary" type="submit" className="mt-3">
+                    <h2 className='headfont line'>Create a Product</h2>
+                    <Form onSubmit={handleSubmit} className='font1 '>
+                        <Row>
+                            <Col xs={12} sm={6} md={4} lg={6}>
+                                <Form.Group controlId="type">
+                                    <Form.Label>Type</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="type"
+                                        value={formData.type}
+                                        onChange={handleChange}
+                                        className='font2'
+                                        required
+                                    />
+                                </Form.Group>
+                            </Col>
+                            <Col xs={12} sm={6} md={4} lg={6}>
+                                <Form.Group controlId="contract">
+                                    <Form.Label>Contract</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="contract"
+                                        value={formData.contract}
+                                        onChange={handleChange}
+                                        className='font2'
+                                        required
+                                    />
+                                </Form.Group>
+                            </Col>
+                            <Col xs={12} sm={6} md={4} lg={6}>
+                                <Form.Group controlId="available">
+                                    <Form.Label>Available</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="available"
+                                        value={formData.available}
+                                        onChange={handleChange}
+                                        className='font2'
+                                        required
+                                    />
+                                </Form.Group>
+                            </Col>
+                            <Col xs={12} sm={6} md={4} lg={6}>
+                                <Form.Group controlId="price">
+                                    <Form.Label>Price</Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        name="price"
+                                        value={formData.price}
+                                        onChange={handleChange}
+                                        className='font2'
+                                        required
+                                    />
+                                </Form.Group>
+                            </Col>
+                            <Col xs={12} sm={6} md={4} lg={6}>
+                                <Form.Group controlId="startbidTime">
+                                    <Form.Label>Start Bid Time</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        name="startbidTime"
+                                        value={formData.startbidTime}
+                                        onChange={handleChange}
+                                        className='font2'
+                                        required
+                                    />
+                                </Form.Group>
+                            </Col>
+                            <Col xs={12} sm={6} md={4} lg={6}>
+                                <Form.Group controlId="endbidTime">
+                                    <Form.Label>End Bid Time</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        name="endbidTime"
+                                        value={formData.endbidTime}
+                                        onChange={handleChange}
+                                        className='font2'
+                                        required
+                                    />
+                                </Form.Group>
+                            </Col>
+                            <Col xs={12} sm={6} md={4} lg={6}>
+                                <Form.Group controlId="date">
+                                    <Form.Label>Date</Form.Label>
+                                    <Form.Control
+                                        type="date"
+                                        name="date"
+                                        value={formData.date}
+                                        onChange={handleChange}
+                                        className='font2'
+                                        required
+                                    />
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                        <Button variant="outline-success" type="submit" className="mt-3 mb-5">
                             Create Product
                         </Button>
                     </Form>
                 </Col>
             </Row>
+            <h2 className='headfont line'>Product History</h2>
             <Row className="my-4">
                 {products.map((product) => (
                     <Col key={product._id} sm={12} md={6} lg={4} className="mb-4">
@@ -159,9 +182,9 @@ const CompanyDashboard = () => {
                                 <Card.Title>{product.type}</Card.Title>
                                 <Card.Text>Contract: {product.contract}</Card.Text>
                                 <Card.Text>Available: {product.available}</Card.Text>
-                                <Card.Text>Price: ${product.price}</Card.Text>
+                                <Card.Text>Price: Rs.{product.price}</Card.Text>
                                 <Card.Text>Bid Time: {product.startbidTime} - {product.endbidTime}</Card.Text>
-                                <Card.Text>Date: {product.date}</Card.Text>
+                                <Card.Text>Date: {new Date(product.date).toLocaleDateString()}</Card.Text>
                                 <Button variant="danger" onClick={() => handleDelete(product._id)}>
                                     Delete
                                 </Button>

@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Container, Row, Col, Form, Button, ListGroup, Alert } from 'react-bootstrap';
 import io from 'socket.io-client';
+import './live.css';
 
 const socket = io('https://energy-backend-ww4p.onrender.com');
 
 const BidChat = ({ productId, userId }) => {
     const [messages, setMessages] = useState([]);
-
     const [currentBid, setCurrentBid] = useState(0);
     const [bidAmount, setBidAmount] = useState(0);
+    const [timer, setTimer] = useState(40); // Initialize the timer
     const [error, setError] = useState('');
+    const [display, setDisplay] = useState('true');
+
+    // Memoize closeBidding function to prevent unnecessary re-renders
+    const closeBidding = useCallback(() => {
+        socket.emit('closeBid', { productId });
+        setDisplay('false');
+        setError('Bidding has closed.');
+    }, [productId]);
 
     useEffect(() => {
         // Fetch initial bid data
@@ -28,6 +37,7 @@ const BidChat = ({ productId, userId }) => {
             setCurrentBid(updatedBid.currentBid);
             setBidAmount(updatedBid.currentBid + 1); // Automatically set bid amount to at least 1 higher
             setError(''); // Clear any previous errors
+            setTimer(40); // Reset the timer when a new bid is placed
         });
 
         // Listen for bid errors
@@ -43,48 +53,73 @@ const BidChat = ({ productId, userId }) => {
         };
     }, [productId, userId]);
 
+    // Handle the countdown timer
+    useEffect(() => {
+        const countdown = setInterval(() => {
+            setTimer((prevTimer) => {
+                if (prevTimer <= 1) {
+                    clearInterval(countdown);
+                    closeBidding(); // Close the bidding when timer reaches 0
+                    return 0;
+                }
+                return prevTimer - 1;
+            });
+        }, 1000);
+
+        // Clean up interval on component unmount
+        return () => clearInterval(countdown);
+    }, [currentBid, closeBidding]);
+
     // Handle raising the bid
     const handleRaiseBid = () => {
         if (bidAmount > currentBid) {
             socket.emit('raiseBid', { userId, productId, bidAmount });
 
             // Automatically send a chat message notifying about the bid raise
-            const message = `Bid raised to $${bidAmount}`;
+            const message = `Bid raised to RS.${bidAmount}`;
             socket.emit('sendBidMessage', { productId, message: { userId, text: message } });
- // Clear the message input
         } else {
             setError('Your bid must be higher than the current bid.');
         }
     };
 
     return (
-        <Container>
+        <Container className='bg-light bgtext '>
             <Row>
                 <Col>
-                    <h4>Current Bid: ${currentBid}</h4>
+                    <h3 className='text-center header headfont'>Current Bid: Rs.{currentBid}</h3>
                     {error && <Alert variant="danger">{error}</Alert>}
+                    <h4 className='text-center'>Time Remaining: {timer} seconds</h4>
+                    <Row className="mt-3 mb-3">
+                        <Col>
+                            <ListGroup>
+                                {messages.map((msg, index) => (
+                                    <ListGroup.Item key={index} className='textbox mt-3'>
+                                        <strong>{msg.userId}:</strong> {msg.text}
+                                    </ListGroup.Item>
+                                ))}
+                            </ListGroup>
+                        </Col>
+                    </Row>
                     <Form.Control
                         type="number"
                         value={bidAmount}
                         onChange={(e) => setBidAmount(Number(e.target.value))}
                         min={currentBid + 1}
                         placeholder="Enter your bid"
+                        className='bid bitside'
+                        disabled={display === 'false'} // Disable input when bidding is closed
                     />
-                    <Button className="mt-2" onClick={handleRaiseBid}>Raise Bid</Button>
+                    <Button 
+                        className="mt-2 mb-5 bitside" 
+                        onClick={handleRaiseBid} 
+                        variant='success'
+                        disabled={display === 'false'} // Disable button when bidding is closed
+                    >
+                        Raise Bid
+                    </Button>
                 </Col>
             </Row>
-            <Row className="mt-3">
-                <Col>
-                    <ListGroup>
-                        {messages.map((msg, index) => (
-                            <ListGroup.Item key={index}>
-                                <strong>{msg.userId}:</strong> {msg.text}
-                            </ListGroup.Item>
-                        ))}
-                    </ListGroup>
-                </Col>
-            </Row>
-            {/* You can remove this Row if you don't want the manual message input */}
         </Container>
     );
 };

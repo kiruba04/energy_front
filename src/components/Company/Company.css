@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Oswald:wght@200..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Turret+Road:wght@200;300;400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Turret+Road:wght@200;300;400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&family=Niconne&family=Roboto&display=swap');
+.font1{
+    font-family: "Turret Road", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.font2{
+    font-family: "Lato", sans-serif;
+
+}
+
+.bg-dull{
+    background-color: #EEF7FF;
+    border-radius: 15px;
+}
+
+.headfont{
+    font-family: "New Amsterdam", sans-serif;
+    margin-bottom: 25px;
+     position: relative; /* Necessary for positioning the pseudo-element */
+     padding-bottom: 5px; /* Space for the border effect */
+}
+
+.headfont::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; /* Height of the "border" */
+    background: linear-gradient(to right, #2ebf91, #8360c3); 
+  }
+  

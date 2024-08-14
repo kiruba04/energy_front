@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=New+Amsterdam&family=Niconne&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto&display=swap');
+
+
+
+.btnalign
+{
+    position:relative;
+    left:35%;
+}
+
+.cardui {
+    transition: transform 1s ease, box-shadow 1s ease;
+    animation: original 1s forwards;
+}
+
+.cardui:hover {
+    animation: trans 1s forwards;
+    box-shadow: rgba(0, 0, 0, 0.24) 2px 6px 10px;
+}
+
+
+.headfont{
+    font-family: "New Amsterdam", sans-serif;
+    margin-bottom: 25px;
+     position: relative; /* Necessary for positioning the pseudo-element */
+     padding-bottom: 5px; /* Space for the border effect */
+}
+
+.headfont::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; /* Height of the "border" */
+    background: linear-gradient(to right, #2ebf91, #8360c3); 
+  }
+  
+
+
+
+
+@keyframes trans {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+@keyframes original {
+    0% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.textbox{
+    font-size: 18px;
+    font-family :'Courier New', Courier, monospace;
+    width:50%;
+}
+
+.bid{
+    margin-top:60px;
+    font-size: 18px;
+    width:40%;
+
+}
+
+.bgtext{
+    border-radius: 20px;
+    margin-top: 20px;
+}
+.header
+{
+    margin-top: 20px;
+}

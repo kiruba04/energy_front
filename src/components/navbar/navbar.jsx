@@ -49,7 +49,7 @@ const NavbarComponent = () => {
 
     return (
         <div>
-            <Navbar className='bgnav' variant="dark" expand="lg">
+            <Navbar className='bgnav position-sticky' variant="dark" expand="lg">
                 <Container>
                     <Navbar.Brand href="#">
                         <img
@@ -66,8 +66,8 @@ const NavbarComponent = () => {
                             <Nav.Link href="/" className=' bgfont'>Home</Nav.Link>
                             <Nav.Link href="/about" className=' bgfont'>About</Nav.Link>
                             <Nav.Link href="/marketplace" className=' bgfont'>Marketplace</Nav.Link>
-                            <Nav.Link href="/livebiting" className=' bgfont'>live Bitting</Nav.Link>
-                            <Nav.Link href="/futurebiting" className=' bgfont'>Future Biting</Nav.Link>
+                            <Nav.Link href="/livebiting" className=' bgfont'>live Bidding</Nav.Link>
+                            <Nav.Link href="/futurebiting" className=' bgfont'>Future Bidding</Nav.Link>
                             <Nav.Link href="/contact" className=' bgfont'>Contact</Nav.Link>
                         </Nav>
                         <div className="navbar-buttons">
