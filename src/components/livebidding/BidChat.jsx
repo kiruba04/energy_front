@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button, ListGroup, Alert } from 'react-bootstrap';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:8800');
+const socket = io('https://energy-backend-ww4p.onrender.com');
 
 const BidChat = ({ productId, userId }) => {
     const [messages, setMessages] = useState([]);

@@ -32,7 +32,7 @@ const NavbarComponent = () => {
     const handleLogout = async () => {
         try {
             // Call the backend to clear cookies
-            await axios.post('http://localhost:8800/api/user/logout', {}, {
+            await axios.post('https://energy-backend-ww4p.onrender.com/api/user/logout', {}, {
                 withCredentials: true,
             });
 

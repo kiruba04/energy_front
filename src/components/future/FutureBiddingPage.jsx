@@ -8,7 +8,7 @@ const FutureBiddingPage = () => {
     useEffect(() => {
         const fetchFutureBids = async () => {
             try {
-                const response = await axios.get('http://localhost:8800/api/products/future');
+                const response = await axios.get('https://energy-backend-ww4p.onrender.com/api/products/future');
                 setFutureBids(response.data);
             } catch (err) {
                 console.error(err);

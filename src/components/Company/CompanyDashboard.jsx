@@ -22,7 +22,7 @@ const CompanyDashboard = () => {
                     throw new Error("User not found in localStorage");
                 }
                 const companyId = user._id; // Get the company ID from localStorage
-                const response = await axios.get(`http://localhost:8800/api/products/company/${companyId}`);
+                const response = await axios.get(`https://energy-backend-ww4p.onrender.com/api/products/company/${companyId}`);
                 setProducts(response.data);
             } catch (err) {
                 console.error(err);
@@ -41,7 +41,7 @@ const CompanyDashboard = () => {
         e.preventDefault();
         try {
             const companyId = JSON.parse(localStorage.getItem('user'))._id; // Get the company ID from localStorage
-            const response = await axios.post('http://localhost:8800/api/products/create', {
+            const response = await axios.post('https://energy-backend-ww4p.onrender.com/api/products/create', {
                 ...formData,
                 companyId, // Include company ID in the request body
             });
@@ -62,7 +62,7 @@ const CompanyDashboard = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8800/api/products/${id}`);
+            await axios.delete(`https://energy-backend-ww4p.onrender.com/api/products/${id}`);
             setProducts(products.filter((product) => product._id !== id));
         } catch (err) {
             console.error(err);
