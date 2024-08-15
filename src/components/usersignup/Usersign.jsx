@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import './usersign.css';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
 const Usersign = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -14,6 +14,7 @@ const Usersign = () => {
   const [district, setDistrict] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,6 +47,7 @@ const Usersign = () => {
         setLocation('');
         setDistrict('');
         setError('');
+        navigate('/login');
       }
     } catch (error) {
       setError('Error registering company. Please try again.');
