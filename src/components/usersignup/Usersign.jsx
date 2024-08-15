@@ -56,12 +56,12 @@ const Usersign = () => {
     <div className='bodybg'>
       <div className='d-flex justify-content-center align-items-center min-vh-100 bg-dark'>
         <div className='bg-light p-4 rounded shadow-lg' style={{ maxWidth: '400px', width: '100%' }}>
-          <h2>Create a Company Account</h2>
+          <h2>Create a User Account</h2>
           {error && <div className="alert alert-danger">{error}</div>}
           {success && <div className="alert alert-success">{success}</div>}
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label className="form-label">Company Name</label>
+              <label className="form-label">User Name</label>
               <input
                 type="text"
                 className="form-control"
