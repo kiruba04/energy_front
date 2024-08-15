@@ -85,7 +85,8 @@ const BidChat = ({ productId, userId }) => {
 
     // Get the current user's ID from localStorage
     const user = localStorage.getItem('user');
-    const currentUserId =user._id;
+    const parsedUser = JSON.parse(user);
+    const currentUserId =parsedUser._id;
 
     return (
         <Container className='bg-light bgtext'>
