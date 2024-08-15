@@ -9,7 +9,7 @@ const BidChat = ({ productId, userId }) => {
     const [messages, setMessages] = useState([]);
     const [currentBid, setCurrentBid] = useState(0);
     const [bidAmount, setBidAmount] = useState(0);
-    const [timer, setTimer] = useState(40); // Initialize the timer
+    const [timer, setTimer] = useState(100); // Initialize the timer
     const [error, setError] = useState('');
     const [display, setDisplay] = useState('true');
 
@@ -83,8 +83,12 @@ const BidChat = ({ productId, userId }) => {
         }
     };
 
+    // Get the current user's ID from localStorage
+    const user = localStorage.getItem('user');
+    const currentUserId =user._id;
+
     return (
-        <Container className='bg-light bgtext '>
+        <Container className='bg-light bgtext'>
             <Row>
                 <Col>
                     <h3 className='text-center header headfont'>Current Bid: Rs.{currentBid}</h3>
@@ -94,7 +98,10 @@ const BidChat = ({ productId, userId }) => {
                         <Col>
                             <ListGroup>
                                 {messages.map((msg, index) => (
-                                    <ListGroup.Item key={index} className='textbox mt-3'>
+                                    <ListGroup.Item 
+                                        key={index} 
+                                        className={`textbox mt-3 ${msg.userId === currentUserId ? 'my-message' : ''}`}
+                                    >
                                         <strong>{msg.userId}:</strong> {msg.text}
                                     </ListGroup.Item>
                                 ))}

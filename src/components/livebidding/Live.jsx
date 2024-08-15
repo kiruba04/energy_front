@@ -31,7 +31,7 @@ const Live = () => {
             const product = productResponse.data;
 
             if (product.status === 'end') {
-                setAlertMessage('Trade was closed.');
+                setAlertMessage('Trade was already closed.');
                 setAlertVariant('danger');
                 return;
             }
